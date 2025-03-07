@@ -60,4 +60,4 @@ jobs:
           app-name: "todobackend"
           slot-name: "Production"
           package: .
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_1d0ef639374f4422a2cbc239a6781bc1 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
