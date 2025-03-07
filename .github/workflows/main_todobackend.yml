@@ -21,12 +21,13 @@ jobs:
       - name: Set up Node.js version
         uses: actions/setup-node@v3
         with:
-          node-version: "22.x"
+          node-version: '20.x'
 
-      - name: npm install, build
+      - name: npm install, build, and test
         run: |
           npm install
           npm run build --if-present
+          npm run test --if-present
 
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
@@ -41,6 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment:
+<<<<<<< HEAD
       name: "Production"
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
@@ -61,3 +63,25 @@ jobs:
           slot-name: "Production"
           package: .
           publish-profile: ${{ secrets.AzureAppService_PublishProfile}}
+=======
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: node-app
+
+      - name: Unzip artifact for deployment
+        run: unzip release.zip
+      
+      - name: 'Deploy to Azure Web App'
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: 'todobackend'
+          slot-name: 'Production'
+          package: .
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_03EA1326D095468B86AE583A25E2DAE7 }}
+>>>>>>> 5a7706c3950414dc03866630c84dada2d212010f
