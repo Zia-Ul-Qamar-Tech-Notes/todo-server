@@ -10,7 +10,7 @@ dotenv.config();
 const port = process.env.PORT || 5000;
 const connectDB = async () =>
   await mongoose.connect(process.env.MONGODB_URI, {
-    dbName: "azure",
+    dbName: "azureDB",
   });
 
 connectDB().then(console.log("Connected to DB"));
@@ -20,7 +20,7 @@ app.use(
   cors({
     origin: "https://todofrontend.z30.web.core.windows.net",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    credentials: false, // If using cookies or authentication
+    credentials: true, // If using cookies or authentication
   })
 );
 
