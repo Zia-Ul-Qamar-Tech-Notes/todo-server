@@ -16,7 +16,7 @@ const connectDB = async () =>
 connectDB().then(console.log("Connected to DB"));
 
 app.use(express.json());
-app.use(cors(process.env.ORIGIN));
+app.use(cors("https://todofrontend.z30.web.core.windows.net"));
 app.use("/auth", UserRouter);
 app.use("/todo", todoRouter);
 
