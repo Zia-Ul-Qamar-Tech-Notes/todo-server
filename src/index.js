@@ -9,7 +9,8 @@ const app = express();
 dotenv.config();
 const port = process.env.PORT || 5000;
 const connectDB = async () =>
-  await mongoose.connect(`${process.env.MONGODB_URI}/azure`, {
+  await mongoose.connect(process.env.MONGODB_URI, {
+    dbName: "Azure",
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
