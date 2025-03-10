@@ -16,7 +16,13 @@ const connectDB = async () =>
 connectDB().then(console.log("Connected to DB"));
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://todofrontend.z30.web.core.windows.net/",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true, // If using cookies or authentication
+  })
+);
 // {
 //   origin: "https://todofrontend.z30.web.core.windows.net/",
 //   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
