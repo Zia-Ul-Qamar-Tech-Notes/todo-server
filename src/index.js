@@ -11,8 +11,6 @@ const port = process.env.PORT || 5000;
 const connectDB = async () =>
   await mongoose.connect(process.env.MONGODB_URI, {
     dbName: "checking",
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
   });
 
 connectDB().then(console.log("Connected to DB"));
