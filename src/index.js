@@ -20,7 +20,7 @@ connectDB().then(console.log("Connected to DB"));
 app.use(express.json());
 app.use(
   cors({
-    origin: process.env.ORIGIN,
+    origin: "*",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true, // If using cookies or authentication
   })
