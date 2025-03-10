@@ -8,10 +8,7 @@ import { todoRouter } from "./routes/todo.js";
 const app = express();
 dotenv.config();
 const port = process.env.PORT || 5000;
-const connectDB = async () =>
-  await mongoose.connect(process.env.MONGODB_URI, {
-    dbName: "checking",
-  });
+const connectDB = async () => await mongoose.connect(process.env.MONGODB_URI);
 
 connectDB().then(console.log("Connected to DB"));
 
