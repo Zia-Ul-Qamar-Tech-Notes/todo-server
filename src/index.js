@@ -10,13 +10,13 @@ dotenv.config();
 const port = process.env.PORT || 5000;
 const connectDB = async () =>
   await mongoose.connect(process.env.MONGODB_URI, {
-    dbName: "todo",
+    dbName: "checking",
   });
 
-connectDB();
+connectDB().then(console.log("Connected to DB"));
 
 app.use(express.json());
-app.use(cors());
+app.use(cors(process.env.ORIGIN));
 app.use("/auth", UserRouter);
 app.use("/todo", todoRouter);
 
